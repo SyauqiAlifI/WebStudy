@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <!-- Font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <!-- Poppins Font Family -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <title>Syauqi Alif - Portofolio</title>
+</head>
+
+<body>
+    <section id="home">
+        <nav>
+            <a href="#" class="logo">Web Portofolio</a>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#ability">Skills</a></li>
+                <li><a href="#contact">Contact Me</a></li>
+            </ul>
+        </nav>
+        <div class="text-container">
+            <p>Hello,</p>
+            <p>I'm Syauqi Alif</p>
+            <p>I'm <span id="auto-type"></span></p>
+            <p>I'm the most happiest child in my family</p>
+            <form>
+                <button class="hire-button">Hire me</button>
+                <button type="submit" class="download-cv">
+                    <a href="../assets/KartuPelajar.jpg" download="">Download My CV</a>
+                </button>
+            </form>
+        </div>
+        <img src="../assets/flat_design.png" alt="" class="model">
+    </section>
+    <section id="about" class="about">
+        <div class="about-text">
+            <p>About me</p>
+        </div>
+        <img src="../assets/My muka.jpg" alt="" id="model2" class="model2">
+        <div class="text-container2">
+            <table width="400px" height="200px">
+                <tr>
+                    <td colspan="2">About me</td>
+                </tr>
+                <tr>
+                    <th>Name: </th>
+                    <td>Syauqi Alif</td>
+                </tr>
+                <tr>
+                    <th>Age: </th>
+                    <td>16</td>
+                </tr>
+                <tr>
+                    <th>From: </th>
+                    <td>South Tangerang</td>
+                </tr>
+                <tr>
+                    <th>NISN: </th>
+                    <td>0068201574</td>
+                </tr>
+                <tr>
+                    <th>Status: </th>
+                    <td>Student, Senior High School</td>
+                </tr>
+                <tr>
+                    <th>School: </th>
+                    <td>SMK IDN Boarding School, Jonggol</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <section id="ability" class="skills">
+        <div class="ability-text">
+            <p>Skills</p>
+            <p>I'm a person who likes to explore more about Websites and another technologies development that has a
+                very wide Community</p>
+        </div>
+        <div class="box-container">
+            <div class="box-1">
+                <span>1</span>
+                <p class="heading"><b>Kotlin</b></p>
+                <p class="details">
+                    <img src="https://cdn-images-1.medium.com/max/2000/1*pUoM-kEeIappqQtyOM2rOw.jpeg" alt="Kotlin"
+                        style="width: 180px;">
+                </p>
+                <button id="box1">Read More</button>
+            </div>
+            <div class="box-2">
+                <span>2</span>
+                <p class="heading"><b>Front-End Development</b></p>
+                <p class="details">
+                    <img src="https://wallpapercave.com/wp/wp7420966.jpg" alt="Front-End" style="width: 180px;">
+                </p>
+                <button id="box2">Read More</button>
+            </div>
+            <div class="box-3">
+                <span>3</span>
+                <p class="heading"><b>Web Programming with Python</b></p>
+                <p class="details">
+                    <img src="https://www.osp.ru/FileStorage/DOCUMENTS_ILLUSTRATIONS/13244091/original.jpg" alt="Python"
+                        style="width: 180px;">
+                </p>
+                <button id="box3">Read More</button>
+            </div>
+        </div>
+    </section>
+    <footer id="contact">
+        <p>Contact Me!</p>
+        <a href="https://wa.me/6285959389079" target="_blank" class="btn-wa">My WhatsApp</a>
+        <p class="copyright">Copyright &copy; by Syauqi Alif</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        $(document).ready(function(){
+            new Typed('#auto-type', {
+                strings: ['a Web Developer^5000', 'an Android Developer^5000', 'a Python Programmer^5000'],
+                typeSpeed: 50,
+                loop: true
+            });
+        });
+    </script>
+</body>
+
+</html>

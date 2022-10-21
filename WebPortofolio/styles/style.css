@@ -1,0 +1,159 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+}
+
+body {
+    background: #fff;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+section {
+    width: 100%;
+    height: 95vh;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    background: #fff;
+    box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
+    /* padding: 0 5%; */
+    z-index: 1;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav ul li a {
+    margin: 15px;
+    color: #050505;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+nav ul li a:hover {
+    color: #4545dd;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.text-container {
+    position: absolute;
+    left: 13%;
+    top: 40%;
+    transform: translate(-13%, -40%);
+    font-weight: 600;
+}
+
+.text-container p {
+    line-height: 0;
+    margin: 55px 25px;
+}
+
+.text-container form {
+    margin: 0 25px;
+}
+
+.text-container p:nth-child(1) {
+    font-size: 22px;
+}
+
+.text-container p:nth-child(2) {
+    font-size: 60px;
+    letter-spacing: 2px;
+}
+
+.text-container p:nth-child(3) {
+    line-height: 30px;
+    font-size: 30px;
+}
+
+.text-container p:nth-child(4) {
+    line-height: 30px;
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: normal;
+}
+
+table tr td, table tr th {
+    text-align: center;
+    background-color: #2f2530;
+    color: white;
+    border-radius: 10px;
+}
+
+.text-container2 {
+    position: absolute;
+    left: 80%;
+    top: 40%;
+    transform: translate(-60%, -40%);
+}
+
+button {
+    padding: 2px 4px;
+}
+
+.hire-button {
+    border: 2px solid #000;
+    cursor: pointer;
+}
+
+.hire-button:hover {
+    background-color: #4545dd;
+    color: white;
+}
+
+.text-container2 table tr td[colspan='2'] {
+    font-size: 22px;
+}
+
+.download-cv {
+    border: 2px solid #000;
+    cursor: pointer;
+}
+
+.download-cv:hover {
+    background-color: #4545dd;
+    color: white;
+}
+
+.download-cv a {
+    color: inherit;
+}
+
+.model {
+    height: 560px;
+    position: absolute;
+    top: 180px;
+    left: 50%;
+}
+
+.model2 {
+    height: 560px;
+    position: absolute;
+    top: 160px;
+    left: 180px;
+}
