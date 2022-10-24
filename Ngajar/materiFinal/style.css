@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+}
+
+img#logo {
+    width: 60px;
+}

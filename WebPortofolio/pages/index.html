@@ -12,10 +12,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <title>Syauqi Alif - Portofolio</title>
 </head>
 
 <body>
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
     <section id="home">
         <nav>
             <a href="#" class="logo">Web Portofolio</a>
@@ -38,13 +43,13 @@
                 </button>
             </form>
         </div>
-        <img src="../assets/flat_design.png" alt="" class="model">
+        <img src="../assets/flat_design.png" alt="" class="model" data-aos="fade-left">
     </section>
     <section id="about" class="about">
         <div class="about-text">
             <p>About me</p>
         </div>
-        <img src="../assets/My muka.jpg" alt="" id="model2" class="model2">
+        <img src="../assets/My muka.jpg" alt="" id="model2" class="model2 animate__animated animate__infinite">
         <div class="text-container2">
             <table width="400px" height="200px">
                 <tr>
@@ -77,7 +82,7 @@
             </table>
         </div>
     </section>
-    <section id="ability" class="skills">
+    <section id="skills" class="ability">
         <div class="ability-text">
             <p>Skills</p>
             <p>I'm a person who likes to explore more about Websites and another technologies development that has a
@@ -103,7 +108,7 @@
             </div>
             <div class="box-3">
                 <span>3</span>
-                <p class="heading"><b>Web Programming with Python</b></p>
+                <p class="heading"><b>Python Programming</b></p>
                 <p class="details">
                     <img src="https://www.osp.ru/FileStorage/DOCUMENTS_ILLUSTRATIONS/13244091/original.jpg" alt="Python"
                         style="width: 180px;">
@@ -114,17 +119,73 @@
     </section>
     <footer id="contact">
         <p>Contact Me!</p>
-        <a href="https://wa.me/6285959389079" target="_blank" class="btn-wa">My WhatsApp</a>
+        <a href="https://wa.me/6285959389079" target="_blank" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> My
+            WhatsApp</a>
         <p class="copyright">Copyright &copy; by Syauqi Alif</p>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <div class="social">
+        <a href="mailto:vstudio776@gmail.com" target="_blank" class="gmail"><i class="fa-brands fa-google"></i></a>
+        <a href="" target="_blank" class="facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="" target="_blank" class="github"><i class="fa-brands fa-github"></i></a>
+        <a href="" target="_blank" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        $(document).ready(function(){
+        AOS.init();
+    </script>
+    <script src="https://kit.fontawesome.com/bfcc361c81.js" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
             new Typed('#auto-type', {
-                strings: ['a Web Developer^5000', 'an Android Developer^5000', 'a Python Programmer^5000'],
+                strings: ['a Web Developer^5000', 'an Android Developer^5000',
+                    'a Python Programmer^5000'
+                ],
                 typeSpeed: 50,
                 loop: true
+            });
+        });
+
+        $('#model2').mousemove(function (event) {
+            $(this).addClass('animate__pulse');
+            setTimeout(function () {
+                $('#model2').removeClass('animate__pulse');
+            }, 2000);
+        });
+
+        $(document).on('click', '.box-1', function (event) {
+            Swal.fire({
+                title: '<h1><b>Kotlin Languages and Frameworks</b></h1>',
+                html: '- experience at making android apps<br>' +
+                    '- experts at kotlin OOP<br>' +
+                    '- experience of using kotlin frameworks',
+                showCancelButton: true,
+                showCloseButton: true
+            });
+        });
+
+        $(document).on('click', '.box-2', function (event) {
+            Swal.fire({
+                title: '<h1><b>HTML5, CSS, and JS</b></h1>',
+                html: '- experience using VSCode<br>' +
+                    '- expert in these languages<br>' +
+                    '- experience of using website frameworks',
+                showCancelButton: true,
+                showCloseButton: true
+            });
+        });
+
+        $(document).on('click', '.box-3', function (event) {
+            Swal.fire({
+                title: '<h2><b>Usnig Python Programming</b></h2>',
+                html: '- expert in python language<br>' +
+                    '- expert in python frameworks<br>' +
+                    '- experience of creating app using python',
+                showCancelButton: true,
+                showCloseButton: true
             });
         });
     </script>
