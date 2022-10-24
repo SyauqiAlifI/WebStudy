@@ -140,6 +140,9 @@
     <script src="https://kit.fontawesome.com/bfcc361c81.js" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
+            $('#status').fadeOut(10000);
+            $('#preloader').delay(1000).fadeOut(1000);
+            $('body').delay(500).css({'overflow':'visible'});
             new Typed('#auto-type', {
                 strings: ['a Web Developer^5000', 'an Android Developer^5000',
                     'a Python Programmer^5000'
