@@ -1,11 +1,68 @@
+<!-- Materi 2 : CSS Properties and Units -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CSS Properties</title>
 </head>
 <body>
-    
+    <div></div>
+    <div id="selector-id"></div>
+    <div class="selector-class"></div>
+    <div class="selector-class"></div>
+
+    <style>
+        /* Pemanggilan CSS selector element */
+        div {
+            /* CSS Units */
+            /* px, %, vh/vw, cm, mm, em, rem */
+
+            /* Margin & Padding */
+            margin: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;
+            padding: 0; /* Same */
+
+            /* general properties */
+            display: block; /* block, inline-block, flex, etc. */
+            position: static; /* static, absolute, fixed, relative, sticky */
+            width: auto; height: auto; /* using CSS Units */
+            color: black; /* "Color name", hex, rgb/rgba */
+            background: none; /* background-color: "Color name", background-image: url()/gradient */
+
+            /* (Absolute, Relative, fixed) Properties */
+            top: 0; right: 0; bottom: 0; left: 0;
+
+            /* flex properties */
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            align-content: normal;
+            flex-wrap: nowrap;
+
+            /* text elements properties (h1...h6, p, a, etc.) */
+            color: black; /* text color */
+            text-align: start; /* aligning the text */
+            font-size: normal;
+            font-family: unset;
+            text-decoration: none;
+            line-height: normal;
+        }
+
+        /* Pemanggilan CSS selector id */
+        div#selector-id, #selector-id {
+            background-color: rebeccapurple;
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+
+        /* Pemanggilan CSS selector class */
+        div.selector-class, .selector-class {
+            background-color: black;
+            width: 20px;
+            height: 20px;
+        }
+    </style>
 </body>
 </html>

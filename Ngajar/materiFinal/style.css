@@ -3,12 +3,80 @@
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 nav {
     position: fixed;
     display: flex;
     flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    backdrop-filter: blur(4px);
+    box-shadow: 2px 5px 12px rgba(0, 0, 0, .2);
+    color: black;
+    padding: 10px;
+    z-index: 1;
+}
+
+a#brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: inherit;
+}
+
+a#brand p {
+    margin-left: 20px;
 }
 
 img#logo {
-    width: 60px;
+    width: 40px;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+a.nav-links {
+    color: inherit;
+}
+
+#container {
+    position: relative;
+    width: 80%;
+    margin: auto;
+}
+
+#left-section {
+    position: absolute;
+    top: 45vh;
+    left: 0;
+}
+
+#right-section {
+    position: absolute;
+    top: 20vh;
+    right: 0;
+}
+
+#hero-img {
+    width: 800px;
+}
+
+#hero-img img {
+    width: 100%;
+}
+
+#hero-text {
+    text-align: center;
 }
