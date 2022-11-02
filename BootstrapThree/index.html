@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .the-carousel {
+                display: none;
+            }
+
+            body {
+                background: url(./undraw_cloud_hosting_7xb1.svg);
+                backdrop-filter: blur(6px);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .the-content {
+                background-color: white;
+                height: fit-content;
+                border-radius: 8px;
+                padding: 12px;
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+                margin: auto 12px !important;
+            }
+
+            .mobile-h1,
+            .mobile-h2 {
+                text-align: center;
+            }
+        }
+    </style>
+    <div class="d-flex vh-100 justify-content-center">
+        <div class="container m-auto the-content">
+            <div class="row align-items-center">
+                <div class="col-md-6 the-carousel">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner js-tilt" data-tilt="">
+                            <div class="carousel-item active card">
+                                <img src="./undraw_cloud_hosting_7xb1.svg" class="d-block w-100 mx-auto image"
+                                    data-bs-interval="1000" alt="image1">
+                            </div>
+                            <div class="carousel-item card">
+                                <img src="./undraw_online_test_re_kyfx.svg" class="d-block h-100 mx-auto image"
+                                    data-bs-interval="2000" alt="image2">
+                            </div>
+                            <div class="carousel-item card">
+                                <img src="./undraw_projections_re_ulc6.svg" class="d-block w-100 mx-auto image"
+                                    data-bs-interval="1000" alt="image3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <nav>
+                        <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-login-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login"
+                                aria-selected="true">Login</button>
+
+                            <button class="nav-link" id="nav-register-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register"
+                                aria-selected="false">Register</button>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-login" role="tabpanel"
+                            aria-labelledby="nav-login-tab">
+                            <form>
+                                <h2 class="h2 mobile-h1">Login</h2>
+                                <div class="mb-3">
+                                    <label for="inputUser" class="form-label">Username</label>
+                                    <input type="email" class="form-control" id="inputUser" aria-describedby="userHelp"
+                                        placeholder="Input Username...">
+                                    <input type="hidden" id="dataUser">
+                                    <div id="userHelp" class="form-text">
+                                        This is a required field
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputPass" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="inputPass"
+                                        aria-describedby="passHelp" placeholder="Input Password...">
+                                    <input type="hidden" id="dataPass">
+                                    <div id="passHelp" class="form-text">
+                                        Put your pass to login.
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="showPass"
+                                        onclick="showPassword()">
+                                    <label class="form-check-label" for="showPass">Show Password</label>
+                                </div>
+                                <hr>
+                                <div class="text-center fs-4">
+                                    <a href="https://github.com/SyauqiAlifI" class="fa-brands fa-github"></a>
+                                    <a href="https://www.linkedin.com/in/syauqi-alif-ibrahim-35440b222/"
+                                        class="fa-brands fa-linkedin"></a>
+                                    <a href="mailto:vstudio776@gmail.com" class="fa-brands fa-google"></a>
+                                    <a href="https://www.instagram.com/syauqialifi_776/"
+                                        class="fa-brands fa-square-instagram"></a>
+                                    <a href="https://www.youtube.com/channel/UCdcUqBnXe27ewIK_UaEFbUw"
+                                        class="fa-brands fa-youtube"></a>
+                                </div>
+                                <button type="button" class="btn btn-primary" id="loginButton" onclick="submitLogin()">Submit</button>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
+                            <form class="row g-3">
+                                <h2 class="h2 mobile-h2">Register</h2>
+                                <div class="col-md-6">
+                                    <label for="newEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="newEmail" placeholder="Your Email...">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="newPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="newPassword"
+                                        placeholder="Your Password...">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="newUser" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="newUser" placeholder="Your Username...">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="asWho" class="form-label">What Are You?</label>
+                                    <input type="password" class="form-control" id="asWho"
+                                        placeholder="e.g Students, Developer, etc.">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputGender" class="form-label">Gender</label>
+                                    <select class="form-select" id="inputGender" aria-label="Select Gender">
+                                        <option selected disabled value="">Choose...</option>
+                                        <option value="1">Man</option>
+                                        <option value="2">Woman</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="inputAge" class="form-label">Age</label>
+                                    <input type="text" class="form-control" id="inputAge">
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck"
+                                            onclick="allowBtn()">
+                                        <label class="form-check-label" for="gridCheck">
+                                            I Agree with the <a href="#" class="text-info"
+                                                style="cursor: pointer;">Terms & Conditions</a>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div style="cursor: not-allowed; width: fit-content;">
+                                        <button type="button" class="btn btn-primary" disabled=""
+                                            id="regButton">Register</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bfcc361c81.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $('.js-tilt').tilt({
+            glare: true,
+            maxGlare: .5,
+            scale: .8
+        });
+
+        $('#regButton').click(() => {
+            let timerInterval
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses daftar bre!!',
+                html: 'Auto Close dalam <b></b> milliseconds.',
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading()
+                    const b = Swal.getHtmlContainer().querySelector('b')
+                    timerInterval = setInterval(() => {
+                        b.textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    $('#nav-tab button[data-bs-target="#nav-login"]').tab('show')
+                    $('#dataUser').val($('#newUser').val())
+                    $('#dataPass').val($('#newPassword').val())
+                }
+            })
+        });
+
+        let btn = document.getElementById('regButton')
+
+        function submitLogin() {
+            let loginUser = $('#inputUser').val()
+            let loginPass = $('#inputPass').val()
+            let dataUser = $('#dataUser').val()
+            let dataPass = $('#dataPass').val()
+            if (dataUser !== loginUser || dataPass !== loginPass) {
+                var wrongSfx = document.createElement('audio')
+                wrongSfx.setAttribute('src', './Roblox Death Sound - Sound Effect (HD).mp3')
+                wrongSfx.addEventListener('ended', function(){
+                    document.removeChild(this)   
+                }, false)
+                let timerInterval
+                wrongSfx.play()
+                Swal.fire({
+                    icon: 'error',
+                    imageUrl: './roblox-head.png',
+                    imageHeight: '200',
+                    title: 'Salah mas Bre!!',
+                    html: 'Auto Close dalam <b></b> milliseconds.',
+                    showCloseButton: true,
+                    showCancelButton: true,
+                    cancelButtonText: '<p>OK <i class="fa-solid fa-circle-check"></i></p>',
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        timerInterval = setInterval(() => {
+                            b.textContent = Swal.getTimerLeft()
+                        }, 100)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log('salah')
+                    }
+                })
+            } else {
+                let timerInterval
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Suksesss mas Bre!!',
+                    html: 'Auto Close dalam <b></b> milliseconds.',
+                    timer: 10000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        timerInterval = setInterval(() => {
+                            b.textContent = Swal.getTimerLeft()
+                        }, 100)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        window.alert('success')
+                        // window.location = 'https://idn.sch.id/'
+                    }
+                })
+            }
+        }
+
+        function showPassword() {
+            let loginPass = document.getElementById('inputPass')
+            if (loginPass.type === 'password') {
+                loginPass.type = 'text'
+            } else {
+                loginPass.type = 'password'
+            }
+        }
+
+        function allowBtn() {
+            if (btn.hasAttribute('disabled')) {
+                btn.removeAttribute('disabled')
+            } else {
+                btn.setAttribute('disabled', '')
+            }
+        }
+    </script>
+</body>
+
+</html>
