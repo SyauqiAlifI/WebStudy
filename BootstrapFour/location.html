@@ -7,6 +7,8 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <!-- Font awesome cdn -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <!-- Datables -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
   <title>IDN Food Course - Locations</title>
 </head>
 
@@ -126,37 +128,43 @@
     <img src="./assets/Logo-IDN-Biru.png" alt="" style="width: 120px;" class="d-block mx-auto align-text-top">
     <ul>
       <li>
-        <a href="#" class="text-color-custom">
+        <a href="./dashboard.html" class="text-color-custom">
+          <i class="fa-solid fa-table-cells-large"></i>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="./index.html" class="text-color-custom">
           <i class="fa-solid fa-house"></i>
           Home
         </a>
       </li>
       <li>
-        <a href="#" class="text-color-custom">
+        <a href="./explore.html" class="text-color-custom">
           <i class="fa-solid fa-magnifying-glass"></i>
           Explore
         </a>
       </li>
       <li>
-        <a href="#" class="text-color-custom">
+        <a href="./main-course.html" class="text-color-custom">
           <i class="fa-solid fa-bowl-food"></i>
           Main Course
         </a>
       </li>
       <li>
-        <a href="#" class="text-color-custom">
+        <a href="./snacks.html" class="text-color-custom">
           <i class="fa-solid fa-cookie-bite"></i>
           Snacks
         </a>
       </li>
       <li>
-        <a href="#" class="text-color-custom">
+        <a href="./desserts.html" class="text-color-custom">
           <i class="fa-solid fa-ice-cream"></i>
           Desserts
         </a>
       </li>
       <li>
-        <a href="./location.html" class="text-color-custom">
+        <a href="#" class="text-color-custom">
           <i class="fa-solid fa-map-location-dot"></i>
           Locations
         </a>
@@ -167,6 +175,12 @@
           About
         </a>
       </li>
+      <li>
+        <a href="./suggestion.html" class="text-color-custom">
+          <i class="fa-solid fa-comment-medical"></i>
+          Suggestion
+        </a>
+      </li>
     </ul>
   </div>
 
@@ -175,16 +189,16 @@
       <h1 class="h1 text-center text-primary" id="text-mode">Our Locations</h1>
       <div class="row">
         <div class="table-responsive">
-          <table class="table table-striped">
+          <table class="table table-striped" id="data-api">
             <thead>
               <tr>
                 <td><b>No</b></td>
                 <td><b>Daerah cabang</b></td>
               </tr>
             </thead>
-            <tbody id="data-api">
-              <!-- Here goes the table data from the API -->
-            </tbody>
+            <!-- <tbody id="data-api">
+              Here goes the table data from the API
+            </tbody> -->
           </table>
         </div>
       </div>
@@ -210,6 +224,9 @@
   <script src="https://kit.fontawesome.com/bfcc361c81.js" crossorigin="anonymous"></script>
   <!-- SweetAlert2 -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Datables -->
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js">
+  </script>
   <!-- Script -->
   <script>
     $(document).ready(function () {
@@ -232,6 +249,25 @@
       $('.table>:not(:last-child)>:last-child>*').toggleClass('white-border-table')
     });
 
+    function longOut() {
+      Swal.fire({
+        title: 'Do you want to logout?',
+        text: 'You\'ll go to the homepage',
+        icon: 'warning',
+        showDenyButton: true,
+        confirmButtonText: 'Yes!',
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          window.location = './index.html'
+        } else if (result.isDenied) {
+          Swal.fire('Canceled', '', 'warning')
+        }
+      })
+    }
+  </script>
+  <!-- no datables -->
+  <!-- <script>
     var html = '';
     var sumber = 'http://www.emsifa.com/api-wilayah-indonesia/api/regencies/36.json';
 
@@ -254,24 +290,54 @@
         $('#data-api').html(html)
       };
     });
-
-    function longOut() {
-      Swal.fire({
-        title: 'Do you want to logout?',
-        text: 'You\'ll go to the homepage',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes!',
-      }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-          window.location = './index.html'
-        } else if (result.isDenied) {
-          Swal.fire('Canceled', '', 'warning')
+  </script> -->
+  <!-- with datables -->
+  <script>
+    $.ajax({
+      'url': 'http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json',
+      'type': 'GET',
+      'datatype': 'json',
+      'success': function (res) {
+        $('#data-api').DataTable({
+          data: res,
+          columns: [{
+              'data': 'null',
+              render: function (data, type, full, meta) {
+                return meta.row;
+              }
+            },
+            {
+              'data': 'name'
+            }
+          ]
+        });
+      }
+    });
+  </script>
+  <!-- <script>
+    $(document).ready(function(){
+      $.ajax({
+        "url": "http://www.emsifa.com/api-wilayah-indonesia/api/provinces.json",
+        "type": "GET",
+        "datatype": 'json',
+        "success": function (data) {
+          $('#data-api').DataTable({
+            data: data,
+            columns: [{
+                'data': 'null',
+                render: function (data, type, full, meta) {
+                  return meta.row;
+                }
+              },
+              {
+                'data': 'name'
+              }
+            ]
+          });
         }
       })
-    }
-  </script>
+    });
+  </script> -->
 </body>
 
 </html>

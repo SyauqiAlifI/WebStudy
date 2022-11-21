@@ -80,6 +80,14 @@
       border-bottom-color: white !important;
     }
 
+    .card:hover {
+      transform: scale(1.1);
+    }
+
+    .card ::-webkit-scrollbar {
+      display: none;
+    }
+
     @media only screen and (max-width: 762px) {
       .card {
         margin-bottom: 40px;
@@ -121,13 +129,19 @@
     <img src="./assets/Logo-IDN-Biru.png" alt="" style="width: 120px;" class="d-block mx-auto align-text-top">
     <ul>
       <li>
+        <a href="./dashboard.html" class="text-color-custom">
+          <i class="fa-solid fa-table-cells-large"></i>
+          Dashboard
+        </a>
+      </li>
+      <li>
         <a href="./index.html" class="text-color-custom">
           <i class="fa-solid fa-house"></i>
           Home
         </a>
       </li>
       <li>
-        <a href="#" class="text-color-custom">
+        <a href="./explore.html" class="text-color-custom">
           <i class="fa-solid fa-magnifying-glass"></i>
           Explore
         </a>
@@ -139,13 +153,13 @@
         </a>
       </li>
       <li>
-        <a href="#" class="text-color-custom">
+        <a href="./snacks.html" class="text-color-custom">
           <i class="fa-solid fa-cookie-bite"></i>
           Snacks
         </a>
       </li>
       <li>
-        <a href="#" class="text-color-custom">
+        <a href="./desserts.html" class="text-color-custom">
           <i class="fa-solid fa-ice-cream"></i>
           Desserts
         </a>
@@ -162,14 +176,20 @@
           About
         </a>
       </li>
+      <li>
+        <a href="./suggestion.html" class="text-color-custom">
+          <i class="fa-solid fa-comment-medical"></i>
+          Suggestion
+        </a>
+      </li>
     </ul>
   </div>
 
   <div class="p-4" id="main-content">
     <div class="container">
       <h1 class="h1 text-center text-primary" id="text-mode">Main Course</h1>
-      <div class="row">
-        <div class="table-responsive">
+      <div class="row" id="data-api">
+        <!-- <div>
           <table class="table table-striped">
             <thead>
               <tr class="text-center">
@@ -181,10 +201,10 @@
               </tr>
             </thead>
             <tbody id="data-api">
-              <!-- Here goes the table data from the API -->
+              Here goes the table data from the API
             </tbody>
           </table>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -230,29 +250,6 @@
       $('.table>:not(:last-child)>:last-child>*').toggleClass('white-border-table')
     });
 
-    var src = 'https://www.themealdb.com/api/json/v1/1/categories.php';
-    var tableHTML = '';
-    fetch(src).then(res => res.json()).then(data => {
-      for (i = 0; i < data.categories.length; i++) {
-        var categories = data.categories
-
-        tableHTML += `
-          <tr class="text-center align-middle">
-            <td>${categories[i].idCategory}</td>
-            <td><img src="${categories[i].strCategoryThumb}" alt="image"></td>
-            <td>${categories[i].strCategory}</td>
-            <td>${categories[i].strCategoryDescription}</td>
-            <td>
-              <form class="d-flex mx-2">
-                <button class="btn text-light bg-primary" type="button" id="btn-logout" onclick="showModalImage('${categories[i].strCategoryThumb}', '${categories[i].strCategory}')">Detail</button>
-              </form>
-            </td>
-          </tr>
-        `;
-
-        $('#data-api').html(tableHTML);
-      };
-    });
 
     function showModalImage(theImage, title) {
       Swal.fire({
@@ -280,6 +277,113 @@
         }
       })
     }
+  </script>
+  <script>
+    var src = 'https://www.themealdb.com/api/json/v1/1/categories.php';
+    var tableHTML = '';
+    /*fetch(src).then(res => res.json()).then(data => {
+      for (i = 0; i < data.categories.length; i++) {
+        var categories = data.categories
+
+        tableHTML += `
+          <tr class="text-center align-middle">
+            <td>${categories[i].idCategory}</td>
+            <td><img src="${categories[i].strCategoryThumb}" alt="image"></td>
+            <td>${categories[i].strCategory}</td>
+            <td>${categories[i].strCategoryDescription}</td>
+            <td>
+              <form class="d-flex mx-2">
+                <button class="btn text-light bg-primary" type="button" id="btn-logout" onclick="showModalImage('${categories[i].strCategoryThumb}', '${categories[i].strCategory}')">Detail</button>
+              </form>
+            </td>
+          </tr>
+        `;
+
+        $('#data-api').html(tableHTML);
+      };
+    });*/
+    fetch(src).then(res => res.json()).then(data => {
+      for (i = 0; i < data.categories.length; i++) {
+        var categories = data.categories;
+
+        // Using collapse bootstrap
+        /*var desc = categories[i].strCategoryDescription;
+        if(desc.length>20){
+          desc = desc.substring(0, 80)
+        };*/
+
+        // My Way
+        /* tableHTML += `
+          <div class="col-md-3 my-3">
+            <div class="card text-center shadow" style="width: 18rem;">
+              <img src="${categories[i].strCategoryThumb}" class="card-img-top" alt="CategoryImage">
+              <div class="card-body">
+                <h5 class="card-title">${categories[i].strCategory}</h5>
+                <div style="width: 100%; height: 8rem; overflow-y: scroll;" class="rounded-1 border border-1 border-dark px-3">
+                  <p class="h6">${categories[i].strCategoryDescription}</p>
+                </div>
+                <hr>
+                <div class="row align-items-center">
+                  <b class="col-md-6">No. ${categories[i].idCategory}</b>
+                  <form class="col-md-6 m-0">
+                    <button class="btn text-light bg-primary" type="button" id="btn-modal" onclick="showModalImage('${categories[i].strCategoryThumb}', '${categories[i].strCategory}')">Detail</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;*/
+
+        // Following Mr. Dana
+        tableHTML += `
+        <div class="col-md-3 my-3">
+          <div class="card text-center shadow" style="width: 18rem;">
+            <img src="${categories[i].strCategoryThumb}" class="card-img-top" alt="CategoryImage">
+            <div class="card-body">
+              <h5 class="card-title">${categories[i].strCategory}</h5>
+              <div style="width: 100%; height: 8rem; overflow-y: scroll;" class="rounded-1 border border-1 border-dark px-3">
+                <p class="h6">${categories[i].strCategoryDescription}</p>
+              </div>
+              <hr>
+              <div class="row align-items-center">
+                <b class="col-md-6">No. ${categories[i].idCategory}</b>
+                <form class="col-md-6 m-0">
+                  <button type="button" class="btn text-light bg-primary trigger-modal" data-bs-toggle="modal" data-bs-target="#example-modal" data-title="${categories[i].strCategory}" data-image="${categories[i].strCategoryThumb}">
+                    Modal
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Modal -->
+          <div class="modal fade" id="example-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title triggered-title" id="exampleModalLabel"></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <img class="img-fluid triggered-image d-block mx-auto"/>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        `;
+        $('#data-api').html(tableHTML);
+
+        $('.trigger-modal').click(function(){
+          $('.triggered-image').attr('src', $(this).attr('data-image'));
+          $('.triggered-title').html($(this).attr('data-title'));
+        });
+
+      };
+    });
   </script>
 </body>
 

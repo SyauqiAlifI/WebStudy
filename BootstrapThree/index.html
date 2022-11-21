@@ -51,15 +51,15 @@
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner js-tilt" data-tilt="">
                             <div class="carousel-item active card">
-                                <img src="./undraw_cloud_hosting_7xb1.svg" class="d-block w-100 mx-auto image"
+                                <img src="./assets/undraw_cloud_hosting_7xb1.svg" class="d-block w-100 mx-auto image"
                                     data-bs-interval="1000" alt="image1">
                             </div>
                             <div class="carousel-item card">
-                                <img src="./undraw_online_test_re_kyfx.svg" class="d-block h-100 mx-auto image"
+                                <img src="./assets/undraw_online_test_re_kyfx.svg" class="d-block h-100 mx-auto image"
                                     data-bs-interval="2000" alt="image2">
                             </div>
                             <div class="carousel-item card">
-                                <img src="./undraw_projections_re_ulc6.svg" class="d-block w-100 mx-auto image"
+                                <img src="./assets/undraw_projections_re_ulc6.svg" class="d-block w-100 mx-auto image"
                                     data-bs-interval="1000" alt="image3">
                             </div>
                         </div>
@@ -84,9 +84,8 @@
                                 <h2 class="h2 mobile-h1">Login</h2>
                                 <div class="mb-3">
                                     <label for="inputUser" class="form-label">Username</label>
-                                    <input type="email" class="form-control" id="inputUser" aria-describedby="userHelp"
+                                    <input type="text" class="form-control" id="inputUser" aria-describedby="userHelp"
                                         placeholder="Input Username...">
-                                    <input type="hidden" id="dataUser">
                                     <div id="userHelp" class="form-text">
                                         This is a required field
                                     </div>
@@ -95,7 +94,6 @@
                                     <label for="inputPass" class="form-label">Password</label>
                                     <input type="password" class="form-control" id="inputPass"
                                         aria-describedby="passHelp" placeholder="Input Password...">
-                                    <input type="hidden" id="dataPass">
                                     <div id="passHelp" class="form-text">
                                         Put your pass to login.
                                     </div>
@@ -214,8 +212,8 @@
                 /* Read more about handling dismissals below */
                 if (result.dismiss === Swal.DismissReason.timer) {
                     $('#nav-tab button[data-bs-target="#nav-login"]').tab('show')
-                    $('#dataUser').val($('#newUser').val())
-                    $('#dataPass').val($('#newPassword').val())
+                    window.sessionStorage.setItem('username', document.getElementById('newUser').value)
+                    window.sessionStorage.setItem('password', document.getElementById('newPassword').value)
                 }
             })
         });
@@ -223,11 +221,11 @@
         let btn = document.getElementById('regButton')
 
         function submitLogin() {
+            let getDataUser = window.sessionStorage.getItem('username')
+            let getDataPass = window.sessionStorage.getItem('password')
             let loginUser = $('#inputUser').val()
             let loginPass = $('#inputPass').val()
-            let dataUser = $('#dataUser').val()
-            let dataPass = $('#dataPass').val()
-            if (dataUser !== loginUser || dataPass !== loginPass) {
+            if (loginUser !== getDataUser || loginPass !== getDataPass) {
                 var wrongSfx = document.createElement('audio')
                 wrongSfx.setAttribute('src', './Roblox Death Sound - Sound Effect (HD).mp3')
                 wrongSfx.addEventListener('ended', function(){
@@ -237,7 +235,7 @@
                 wrongSfx.play()
                 Swal.fire({
                     icon: 'error',
-                    imageUrl: './roblox-head.png',
+                    imageUrl: './assets/roblox-head.png',
                     imageHeight: '200',
                     title: 'Salah mas Bre!!',
                     html: 'Auto Close dalam <b></b> milliseconds.',
