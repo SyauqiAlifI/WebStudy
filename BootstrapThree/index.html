@@ -242,7 +242,7 @@
                     showCloseButton: true,
                     showCancelButton: true,
                     cancelButtonText: '<p>OK <i class="fa-solid fa-circle-check"></i></p>',
-                    timer: 10000,
+                    timer: 3000,
                     timerProgressBar: true,
                     didOpen: () => {
                         Swal.showLoading()
@@ -266,7 +266,7 @@
                     icon: 'success',
                     title: 'Suksesss mas Bre!!',
                     html: 'Auto Close dalam <b></b> milliseconds.',
-                    timer: 10000,
+                    timer: 3000,
                     timerProgressBar: true,
                     didOpen: () => {
                         Swal.showLoading()
@@ -281,8 +281,8 @@
                 }).then((result) => {
                     /* Read more about handling dismissals below */
                     if (result.dismiss === Swal.DismissReason.timer) {
-                        window.alert('success')
-                        // window.location = 'https://idn.sch.id/'
+                        // window.alert('success')
+                        window.location = '/BootstrapFour/index.html'
                     }
                 })
             }

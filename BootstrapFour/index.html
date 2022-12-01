@@ -134,7 +134,7 @@
           </li>
         </ul>
         <form class="d-flex">
-          <button class="btn text-light bg-primary" type="button" id="btn-logout">Logout</button>
+          <button class="btn text-light bg-primary" type="button" id="btn-logout" onclick="longOut()">Logout</button>
         </form>
       </div>
     </div>
@@ -632,6 +632,23 @@
       $('body').delay(500).css({
         'overflow': 'visible'
       });
+
+      function longOut() {
+        Swal.fire({
+          title: 'Do you want to logout?',
+          text: 'You\'ll go to the Login Page',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes!',
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            window.location = '/BootstrapThree/index.html'
+          } else if (result.isDenied) {
+            Swal.fire('Canceled', '', 'warning')
+          }
+        })
+      }
 
       document.getElementById('button-toggle').addEventListener('click', () => {
         document.getElementById('sidebar').classList.toggle('active-sidebar')
