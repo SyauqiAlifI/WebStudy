@@ -624,6 +624,8 @@
   </script>
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/bfcc361c81.js" crossorigin="anonymous"></script>
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Script -->
   <script>
     $(document).ready(function () {
@@ -632,23 +634,6 @@
       $('body').delay(500).css({
         'overflow': 'visible'
       });
-
-      function longOut() {
-        Swal.fire({
-          title: 'Do you want to logout?',
-          text: 'You\'ll go to the Login Page',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonText: 'Yes!',
-        }).then((result) => {
-          /* Read more about isConfirmed, isDenied below */
-          if (result.isConfirmed) {
-            window.location = '/BootstrapThree/index.html'
-          } else if (result.isDenied) {
-            Swal.fire('Canceled', '', 'warning')
-          }
-        })
-      }
 
       document.getElementById('button-toggle').addEventListener('click', () => {
         document.getElementById('sidebar').classList.toggle('active-sidebar')
@@ -667,6 +652,23 @@
       $('p, a, i, b, span, h1, h2, h3, h4, h5, h6').toggleClass('text-light')
       $('hr').toggleClass('bg-light')
     })
+
+    function longOut() {
+      Swal.fire({
+        title: 'Do you want to logout?',
+        text: 'You\'ll go to the Login Page',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes!',
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          window.location = '/BootstrapThree/index.html'
+        } else if (result.isDenied) {
+          Swal.fire('Canceled', '', 'warning')
+        }
+      })
+    }
   </script>
 </body>
 

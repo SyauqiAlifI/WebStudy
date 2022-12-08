@@ -227,7 +227,7 @@
             </div>
             <div class="row col-md-10">
               <div class="col-md-6 shadow-lg p-0">
-                <select name="order" id="inputOrder" class="form-select container-fluid order-select">
+                <select name="order" id="inputOrder" class="form-select container-fluid">
                 </select>
               </div>
               <div class="col-md-1">
@@ -330,17 +330,14 @@
       },
     });
 
-    var i_ctx_add = 1;
+    var i = 1;
     $('#add').click(function () {
-      i_ctx_add++;
+      i++;
       $('#going-down').append(
         `
-        <div class="row mb-3" id="row-order-${i_ctx_add}">
-          <div class="col-md-2">
-            <label for="inputOrder" class="form-label"><b>Select your order</b></label>
-          </div>
-          <div class="col-md-5 shadow-lg p-0">
-            <select name="order" id="inputOrder" class="form-select container-fluid order-select">
+        <div class="row my-3 row-order-${i}" id="">
+          <div class="col-md-7 shadow-lg p-0">
+            <select name="order" class="form-select order-select" style="width:100%;">
             </select>
           </div>
           <div class="col-md-1">
@@ -350,16 +347,35 @@
             <input type="text" name="qty" class="form-control container-fluid">
           </div>
           <div class="col-md-1">
-            <button type="button" id="btn-order-${i_ctx_add}" class="btn btn-danger btn-remove w-100" name="add">&minus;</button>
+            <button type="button" id="${i}" class="btn btn-danger btn-remove w-100" name="add">&minus;</button>
           </div>
         </div>
         `
       );
-    });
-
-    $('.btn-remove').click(function () {
-      var button_id = $(this).attr('id');
-      $(`row-order-${i_ctx_add}`).remove();
+      $('.order-select').select2({
+        placeholder: 'Select One...',
+        ajax: {
+          datatype: 'json',
+          delay: 250,
+          url: 'https://www.themealdb.com/api/json/v1/1/categories.php',
+          processResults: function (data) {
+            console.log(data);
+            return {
+              results: $.map(data.categories, function (item) {
+                return {
+                  text: item.strCategory,
+                  id: item.idCategory
+                }
+              })
+            };
+          },
+        },
+      });
+      $('.btn-remove').click(function () {
+        var button_id = $(this).attr('id');
+        console.log(button_id)
+        $(`.row-order-${button_id}`).remove();
+      });
     });
 
     function longOut() {

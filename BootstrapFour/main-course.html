@@ -7,7 +7,11 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <!-- Font awesome cdn -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <title>IDN Food Course - Locations</title>
+  <!-- Datables -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+  <!-- Print.js -->
+  <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
+  <title>IDN Food Course - Main Course</title>
 </head>
 
 <body>
@@ -119,11 +123,50 @@
           </li>
         </ul>
         <form class="d-flex m-0">
+          <a href="#" id="cart-modal-btn" class="mx-4 my-auto" style="height: fit-content;" data-bs-toggle="modal"
+            data-bs-target="#modal-cart"><i class="fa-solid fa-cart-shopping"></i></a>
           <button class="btn text-light bg-primary" type="button" id="btn-logout" onclick="longOut()">Logout</button>
         </form>
       </div>
     </div>
   </nav>
+
+  <!-- Modal Cart -->
+  <div class="modal fade" id="modal-cart" tabindex="-1" aria-labelledby="modal-cart-label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-cart-label">Detail Cart</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="table-responsive" id="print-area">
+            <table class="table" id="cart-list">
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Qty.</th>
+                </tr>
+              </thead>
+            </table>
+            <div class="row g-3 w-100 align-items-center">
+              <div class="col-auto">
+                <label for="total" class="col-form-label">Total :</label>
+              </div>
+              <div class="col-auto">
+                <input type="number" class="form-control" id="total">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="printJS('print-area','html')">Checkout</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="sidebar p-4 shadow bg-light" id="sidebar">
     <img src="./assets/Logo-IDN-Biru.png" alt="" style="width: 120px;" class="d-block mx-auto align-text-top">
@@ -227,7 +270,11 @@
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/bfcc361c81.js" crossorigin="anonymous"></script>
   <!-- SweetAlert2 -->
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Datables -->
+  <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+  <!-- Print.js -->
+  <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
   <!-- Script -->
   <script>
     $(document).ready(function () {
@@ -346,10 +393,10 @@
               </div>
               <hr>
               <div class="row align-items-center">
-                <b class="col-md-6">No. ${categories[i].idCategory}</b>
-                <form class="col-md-6 m-0">
+                <a href="#" class="col-md-6 text-start trigger-modal cart" data-bs-toggle="modal" data-bs-target="#modal-cart" data-food="${categories[i].strCategory}"><i class="fa-solid fa-cart-plus"></i></a>
+                <form class="col-md-6 m-0 text-end">
                   <button type="button" class="btn text-light bg-primary trigger-modal" data-bs-toggle="modal" data-bs-target="#example-modal" data-title="${categories[i].strCategory}" data-image="${categories[i].strCategoryThumb}">
-                    Modal
+                    Image
                   </button>
                 </form>
               </div>
@@ -377,9 +424,47 @@
         `;
         $('#data-api').html(tableHTML);
 
-        $('.trigger-modal').click(function(){
+        $('.trigger-modal').click(function () {
           $('.triggered-image').attr('src', $(this).attr('data-image'));
           $('.triggered-title').html($(this).attr('data-title'));
+        });
+
+        $('.cart').click(function () {
+          //var totalNumber untuk mengurutkan seiring bertambahnya jumlah data
+          var totalNumber = 1;
+          //untuk open modal cart
+          $('#modal-cart').modal('show');
+          //var n untuk menampung nama makanan yang diambil dari atribut data-food
+          var n = $(this).attr('data-food');
+          //var table untuk menampung nama table
+          var table = document.getElementById('cart-list');
+          //logic menampung data food ke table cartlist
+          //var baris untuk menambahkan row yang dimulai dari index 1
+          var baris = table.insertRow(1);
+          //var kolom1 untuk menampung nomor var totalNumber
+          var kolom1 = baris.insertCell(0);
+          //var kolom2 untuk menampung data-food
+          var kolom2 = baris.insertCell(1);
+          //var kolom3 untuk menampung data jumlah
+          var kolom3 = baris.insertCell(2);
+          //untuk membuat dom total number di kolom1
+          kolom1.innerHTML = '<div class="total-number"></div>';
+          $("#cart-list .total-number").each(function () {
+            var jumlahNumber = $(this).text(parseInt(totalNumber++));
+          });
+          kolom2.innerHTML = n;
+          // membuat HTML DOM element input type
+          kolom3.innerHTML = '<input type="number" class="form-control jumlah" placeholder="Masukkan Jumlah"></input>';
+
+          $('.jumlah').keyup(function(){
+            var total = 0;
+            $('#cart-list .jumlah').each(function(){
+              var jumlah = $(this).val();
+              total += parseFloat(jumlah);
+            });
+            $('#total').val(total);
+          });
+
         });
 
       };
