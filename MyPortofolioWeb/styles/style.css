@@ -1,0 +1,102 @@
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+* {
+  font-family: Poppins;
+  color: white;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  position: relative;
+  overflow: hidden;
+  padding: 5% 0;
+}
+
+.bg-black {
+  background-color: black;
+}
+
+.bg-nav {
+  background-color: rgba(255, 255, 255, .05);
+  backdrop-filter: blur(15px);
+}
+
+#home {
+  background-image: url('../assets/bg-home.png');
+  background-position: 25%;
+}
+
+.nav-item {
+  margin: 0 .3rem;
+}
+
+a.nav-link {
+  border-radius: 10%;
+  color: rgba(255, 255, 255, .5) !important;
+}
+
+a.nav-link:hover {
+  background-color: rgba(255, 255, 255, .1);
+  color: white !important;
+}
+
+#box-img-model {
+  position: absolute;
+  bottom: 0;
+  right: -10%;
+  width: 55rem;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+}
+
+#hr-custom {
+  width: 3rem;
+  height: .1rem;
+  background-color: white;
+  border-radius: 25%;
+}
+
+.box-about {
+  /* background-color: rgba(255, 255, 255, .1); */
+  padding: 1rem 2rem;
+  margin: 0 .5rem;
+  background: linear-gradient(rgb(30, 30, 30), rgb(30, 30, 30)) padding-box,
+    linear-gradient(to bottom right, rgb(115, 115, 115), rgb(35, 35, 35)) border-box;
+  border-radius: 50em;
+  border: 4px solid transparent;
+}
+
+#skills {
+  background-image: url('../assets/bg-skills.png');
+  background-position: 50%;
+}
+
+.card-skills {
+  border-radius: 5px;
+  background-color: rgba(30, 30, 30, 1);
+  padding: 2rem 1rem;
+}
