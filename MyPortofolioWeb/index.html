@@ -38,7 +38,7 @@
             <a class="nav-link text-light" href="#skills">Skills</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">Contact Me</a>
+            <a class="nav-link text-light" href="#contact">Contact Me</a>
           </li>
         </ul>
       </div>
@@ -50,14 +50,12 @@
       <div class="row w-100">
         <div class="col-md-6 d-flex justify-content-center flex-column">
           <h5 class="h5 text-shadow">Hello,</h5>
-          <h2 class="h2 text-shadow">I'm Syauqi Alif Ibrahim</h2>
-          <h3 class="h3 text-shadow">I'm <span id="auto-type"></span></h3>
+          <h1 class="h1 text-shadow">I'm Syauqi Alif Ibrahim</h1>
+          <h4 class="h4 text-shadow">I'm <span id="auto-type"></span></h4>
           <p class="p text-shadow">Seems lil' Bit too old right?</p>
           <div id="box-button" class="mt-5">
-            <form>
-              <button class="btn btn-dark rounded-pill shadow-lg">Hire Me</button>
-              <button class="btn btn-light rounded-pill shadow-lg ms-2">Download CV</button>
-            </form>
+            <a href="mailto:vstudio776@gmail.com" class="btn btn-dark rounded-pill shadow-lg" id="btn-hire">Hire Me</a>
+            <a href="#" class="btn btn-dark rounded-pill shadow-lg ms-2" id="btn-cv">Download CV</a>
           </div>
         </div>
         <div class="col-md-6" id="right-home">
@@ -71,7 +69,7 @@
   <section class="bg-dark" id="about">
     <div class="container">
       <h2 class="h2 text-center">About Me</h2>
-      <div id="hr-custom" class="mx-auto mb-5"></div>
+      <div class="hr-custom mx-auto mb-5"></div>
       <div class="row">
         <div class="col d-flex flex-column text-center box-about">
           <h2 class="h2">Full Name</h2>
@@ -107,7 +105,7 @@
   <section class="h-100 d-flex align-items-center" id="skills">
     <div class="container">
       <h2 class="h2 text-center">My Skills</h2>
-      <div id="hr-custom" class="mx-auto mb-5"></div>
+      <div class="mx-auto mb-5 hr-custom"></div>
       <div class="row">
         <div class="col-md-6">
           <div class="card-skills">
@@ -122,6 +120,40 @@
       </div>
     </div>
   </section>
+  <section class="bg-dark" id="contact">
+    <div class="container">
+      <h2 class="h2 text-center">My Social Media</h2>
+      <div class="mx-auto mb-5 hr-custom"></div>
+      <div class="row w-25 mx-auto mb-5">
+        <div class="col">
+          <a href="https://wa.me/6281317658028" id="whatsapp">
+            <img src="./assets/wa.png" class="img-fluid" alt="">
+          </a>
+        </div>
+        <div class="col">
+          <a href="https://www.instagram.com/syauqialifi_776/" id="instagram">
+            <img src="./assets/ig.png" class="img-fluid" alt="">
+          </a>
+        </div>
+        <div class="col">
+          <a href="mailto:vstudio776@gmail.com" id="gmail">
+            <img src="./assets/gmail.png" class="img-fluid" alt="">
+          </a>
+        </div>
+        <div class="col">
+          <a href="https://github.com/SyauqiAlifI" id="github">
+            <img src="./assets/github.png" class="img-fluid" alt="">
+          </a>
+        </div>
+        <div class="col">
+          <a href="https://stackoverflow.com/users/19584783/syauqi-alif-ibrahim" id="stack-overflow">
+            <img src="./assets/so.png" alt="" class="img-fluid">
+          </a>
+        </div>
+      </div>
+      <p class="p text-center">Copyright &copy; by Syauqi Alif I</p>
+    </div>
+  </section>
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -134,20 +166,31 @@
   <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    $(document).ready(function () {
+      new Typed('#auto-type', {
+        strings: ['a Web Developer^3000', 'an Android Developer^3000',
+          'a Python Programmer^3000'
+        ],
+        typeSpeed: 30,
+        loop: true
+      });
+    });
+  </script>
   <script>
     const ctx = document.getElementById('barChart');
     new Chart(ctx, {
       type: 'bar',
       data: {
         labels: ['Kotlin', 'HTML', 'CSS', 'JS', 'Python', 'Dart'],
-        datasets: [
-          {
-            label: 'Skills Points',
-            data: [85, 95, 95, 75, 65, 40],
-            borderColor: '#36A2EB',
-            backgroundColor: [' #B125EA', '#F16529', '#264DE4', '#f0db4f', '#4B8BBE', '#0075BA'],
-          },
-        ]
+        datasets: [{
+          label: 'Skills Points',
+          data: [85, 95, 95, 75, 65, 40],
+          borderColor: '#36A2EB',
+          backgroundColor: [' #B125EA', '#F16529', '#264DE4', '#f0db4f', '#4B8BBE', '#0075BA'],
+        }, ]
       },
       options: {
         scales: {
@@ -162,14 +205,12 @@
       type: 'line',
       data: {
         labels: ['Kotlin', 'HTML', 'CSS', 'JS', 'Python', 'Dart'],
-        datasets: [
-          {
-            label: 'Skills Points',
-            data: [85, 95, 95, 75, 65, 40],
-            borderColor: '#36A2EB',
-            backgroundColor: [' #B125EA', '#F16529', '#264DE4', '#f0db4f', '#4B8BBE', '#0075BA'],
-          },
-        ]
+        datasets: [{
+          label: 'Skills Points',
+          data: [85, 95, 95, 75, 65, 40],
+          borderColor: '#36A2EB',
+          backgroundColor: [' #B125EA', '#F16529', '#264DE4', '#f0db4f', '#4B8BBE', '#0075BA'],
+        }, ]
       },
       options: {
         scales: {
